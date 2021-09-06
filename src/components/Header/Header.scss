@@ -1,0 +1,10 @@
+$header-container_color: #7ed321;
+
+.header {
+  background-color: $header-container_color;
+  &__container {
+    display: flex;
+    align-items: center;
+    height: 116px;
+  }
+}
