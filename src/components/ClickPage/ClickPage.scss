@@ -1,0 +1,31 @@
+$click_container: #e990f9;
+$white: #fff;
+
+.main__container {
+  display: flex;
+  justify-content: center;
+  widows: 100%;
+  padding: 207px 0 0 0;
+}
+.click__me_container {
+  background-color: $click_container;
+  width: 503px;
+  height: 379px;
+  display: flex;
+  padding-top: 77px;
+  border-radius: 44px;
+  flex-direction: column;
+  align-items: center;
+}
+.click__me_button {
+  width: 151px;
+  height: 60px;
+  background-color: $click_container;
+  border-radius: 44px;
+  cursor: pointer;
+  border: solid 3px $white;
+  font-size: 18px;
+  font-weight: bold;
+  color: $white;
+  margin-top: 56px;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Header.scss";
 
 const Header: React.FC = () => {
@@ -6,7 +7,9 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="container">
         <div className="header__container">
-          <img src="../images/logo.png" alt="logo" />
+          <NavLink to="/">
+            <img src="../images/logo.png" alt="logo" />
+          </NavLink>
         </div>
       </div>
     </header>
