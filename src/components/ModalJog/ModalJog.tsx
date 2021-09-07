@@ -3,10 +3,12 @@ import React, {
   InputHTMLAttributes,
   useState,
 } from "react";
+import { asyncUserMethod, IJogs } from "../../asyncUserMethod";
 import "./ModalJog.scss";
 
 interface IModalJog {
   setModalJog(bool: boolean): void;
+  setJogs(jogs: IJogs[]): void;
 }
 
 const ModalJog: React.FC<IModalJog> = (props) => {
@@ -16,28 +18,34 @@ const ModalJog: React.FC<IModalJog> = (props) => {
 
   const handleJog = async (e: React.MouseEvent) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
     const formData = new FormData();
     formData.append("distance", distance);
     formData.append("date", date);
     formData.append("time", time);
     try {
-      if (localStorage.getItem("token")) {
+      if (token) {
         const data = await fetch(
           "https://jogtracker.herokuapp.com/api/v1/data/jog",
           {
             method: "POST",
             body: formData,
             headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
-        console.log(data);
       }
-      setDate("");
-      setDistance("");
-      setTime("");
-      props.setModalJog(false);
+      if (token) {
+        const [userData,jogsData] = await asyncUserMethod(token);
+        props.setJogs(
+          jogsData.filter((item: IJogs) => item.user_id == userData.response.id)
+        );
+        setDate("");
+        setDistance("");
+        setTime("");
+        props.setModalJog(false);
+      }
     } catch (e) {
       console.log(e);
     }

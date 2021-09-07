@@ -21,6 +21,7 @@ const App: React.FC = () => {
   const [user, setUser] = useState<User>({});
   const [jogs, setJogs] = useState<IJogs[]>([]);
   const [processing, setProcessing] = useState<boolean>(false);
+  const [filter, setFilter] = useState<boolean>(false);
 
   const fetchData = async (token: string) => {
     const [userData, jogsData] = await asyncUserMethod(token);
@@ -48,11 +49,15 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <Header user={user} />
+      <Header user={user} setFilter={setFilter} filter={filter} />
       {Object.keys(user).length !== 0 ? (
         <Switch>
           <Route path="/info" exact render={() => <Information />} />
-          <Route path="/" exact render={() => <Jogs jogs={jogs} />} />
+          <Route
+            path="/"
+            exact
+            render={() => <Jogs jogs={jogs} setJogs={setJogs} filter={filter} />}
+          />
           <Route component={NoMatchPage} path="" />
         </Switch>
       ) : (

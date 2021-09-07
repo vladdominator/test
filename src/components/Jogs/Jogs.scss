@@ -21,3 +21,20 @@
   bottom: 40px;
   right: 40px;
 }
+
+.jog__date {
+  font-size: 14px;
+  color: #979797;
+}
+
+.jog__speed, .jog__distance, .jog__time {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 9px;
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #979797;
+    margin-left: 4px;
+  }
+}

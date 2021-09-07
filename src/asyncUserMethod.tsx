@@ -15,8 +15,8 @@ interface IAsync {
 }
 
 export const asyncUserMethod = async (token: string) => {
-  const userResponse = await fetch(
-    "https://jogtracker.herokuapp.com/api/v1/auth/user",
+  const jogsResponse = await fetch(
+    "https://jogtracker.herokuapp.com/api/v1/data/sync",
     {
       method: "GET",
       headers: {
@@ -25,8 +25,8 @@ export const asyncUserMethod = async (token: string) => {
       },
     }
   );
-  const jogsResponse = await fetch(
-    "https://jogtracker.herokuapp.com/api/v1/data/sync",
+  const userResponse = await fetch(
+    "https://jogtracker.herokuapp.com/api/v1/auth/user",
     {
       method: "GET",
       headers: {
