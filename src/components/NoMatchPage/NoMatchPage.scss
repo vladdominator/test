@@ -1,0 +1,27 @@
+$purple: #e990f9;
+$gray: #b0b0b0;
+
+.create__jog_404 {
+  width: 249px;
+  height: 60px;
+  border-radius: 36px;
+  cursor: pointer;
+  border: solid 3px $purple;
+  background: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  color: $purple;
+  margin-top: 150px;
+}
+.text_404 {
+  font-size: 24px;
+  color: $gray;
+  margin-top: 47px;
+}
+.container_404 {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 240px 0 0 0;
+}

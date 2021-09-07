@@ -1,0 +1,10 @@
+@import "../Header/Header.scss";
+
+.modal__jog_container {
+  width: 503px;
+  margin: 118px auto;
+  height: 379px;
+  padding: 24px 27px 47px 88px;
+  border-radius: 44px;
+  background-color: $header-container_color;
+}

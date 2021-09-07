@@ -6,6 +6,7 @@ import { ClickPage } from "./components/ClickPage/ClickPage";
 import { Header } from "./components/Header/Header";
 import { Information } from "./components/Information/Information";
 import { Jogs } from "./components/Jogs/Jogs";
+import { NoMatchPage } from "./components/NoMatchPage/NoMatchPage";
 
 export interface User {
   email?: string;
@@ -49,10 +50,11 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Header user={user} />
       {Object.keys(user).length !== 0 ? (
-        <>
+        <Switch>
           <Route path="/info" exact render={() => <Information />} />
           <Route path="/" exact render={() => <Jogs jogs={jogs} />} />
-        </>
+          <Route component={NoMatchPage} path="" />
+        </Switch>
       ) : (
         <>
           <Route

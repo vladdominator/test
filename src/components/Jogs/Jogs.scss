@@ -1,0 +1,23 @@
+.container__jogs {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.jogs__item {
+  width: 250px;
+  display: flex;
+  margin-top: 78px;
+  align-items: center;
+}
+.jogs__information {
+  margin-left: 40px;
+}
+
+.add_jogs_button {
+  position: fixed;
+  cursor: pointer;
+  bottom: 40px;
+  right: 40px;
+}
