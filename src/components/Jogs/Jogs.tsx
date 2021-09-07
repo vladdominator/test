@@ -7,7 +7,7 @@ interface IJogComponent {
 }
 
 const Jogs: React.FC<IJogComponent> = (props) => {
-  const [modalJog, setModalJog] = useState<boolean>(true);
+  const [modalJog, setModalJog] = useState<boolean>(false);
 
   if (modalJog) {
     return <ModalJog setModalJog={setModalJog} />;

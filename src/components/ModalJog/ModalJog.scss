@@ -4,7 +4,55 @@
   width: 503px;
   margin: 118px auto;
   height: 379px;
-  padding: 24px 27px 47px 88px;
+  padding: 24px 88px 47px 88px;
   border-radius: 44px;
+  position: relative;
   background-color: $header-container_color;
+}
+.cancel__modal {
+  position: absolute;
+  top: 24px;
+  right: 27px;
+  cursor: pointer;
+}
+.distance_cont {
+  margin-top: 76px;
+}
+.distance_cont,
+.time_cont,
+.date_cont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p {
+    font-size: 16px;
+  }
+}
+.time_cont,
+.date_cont {
+  margin-top: 25px;
+}
+
+.distance__input,
+.time__input,
+.date__input {
+  width: 236px;
+  height: 31px;
+  border-radius: 7px;
+  border: solid 1px #979797;
+  background-color: #fff;
+  padding: 0 20px;
+}
+
+.save__jog {
+  width: 100%;
+  height: 42px;
+  margin: 46px 0 0 0;
+  border-radius: 25.2px;
+  font-size: 12.6px;
+  font-weight: bold;
+  color: #fff;
+  border: solid 2px #fff;
+  background: inherit;
+  cursor: pointer;
 }
