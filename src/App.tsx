@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { asyncUserMethod, IJogs } from "./asyncUserMethod";
 import { ClickPage } from "./components/ClickPage/ClickPage";
 import { Header } from "./components/Header/Header";
+import { Information } from "./components/Information/Information";
+import { Jogs } from "./components/Jogs/Jogs";
 
 export interface User {
   email?: string;
@@ -22,7 +24,10 @@ const App: React.FC = () => {
   const fetchData = async (token: string) => {
     const [userData, jogsData] = await asyncUserMethod(token);
     setUser(userData);
-    setJogs(jogsData);
+
+    setJogs(
+      jogsData.filter((item: IJogs) => item.user_id == userData.response.id)
+    );
     setProcessing(false);
   };
 
@@ -42,11 +47,14 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <Header />
-      <Switch>
-        {Object.keys(user).length !== 0 ? (
-          ""
-        ) : (
+      <Header user={user} />
+      {Object.keys(user).length !== 0 ? (
+        <>
+          <Route path="/info" exact render={() => <Information />} />
+          <Route path="/" exact render={() => <Jogs jogs={jogs} />} />
+        </>
+      ) : (
+        <>
           <Route
             path="/"
             exact
@@ -59,8 +67,8 @@ const App: React.FC = () => {
               />
             )}
           />
-        )}
-      </Switch>
+        </>
+      )}
     </BrowserRouter>
   );
 };

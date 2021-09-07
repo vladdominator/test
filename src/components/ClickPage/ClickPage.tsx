@@ -18,7 +18,9 @@ const ClickPage: React.FC<IClickPage> = (props) => {
       "eb8cdf9e61521369da24ab55f0095f5da870881990d9b75daefef50333178daf"
     );
     props.setUser(user);
-    props.setJogs(jogs);
+    props.setJogs(
+      jogs.filter((item: IJogs) => item.user_id == user.response.id)
+    );
     localStorage.setItem("token", token);
   };
   return (

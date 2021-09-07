@@ -1,0 +1,26 @@
+@import "../Header/Header.scss";
+
+.info__paragraph {
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+}
+.container__info {
+  max-width: 614px;
+  margin: 0 auto;
+  padding: 85px 0 0 0;
+}
+.info__paragraph:nth-child(even) {
+  margin-top: 15px;
+}
+
+.info__paragraph:nth-child(odd) {
+  margin-top: 40px;
+}
+.info__text {
+  font-size: 36px;
+  font-weight: bold;
+  color: $header-container_color;
+}

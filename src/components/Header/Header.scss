@@ -6,5 +6,26 @@ $header-container_color: #7ed321;
     display: flex;
     align-items: center;
     height: 116px;
+    justify-content: space-between;
   }
+}
+
+.active__link {
+  border-bottom: solid 2px #fff;
+}
+.navigation {
+  display: flex;
+  align-items: center;
+}
+.link {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 46px;
+  height: 25px;
+  display: block;
+  margin-top: 10px;
+}
+.filter {
+  cursor: pointer;
 }

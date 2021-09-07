@@ -7,7 +7,7 @@ export interface IJogs {
 }
 
 interface IResponse {
-  jogs: IJogs;
+  jogs: IJogs[];
 }
 
 interface IAsync {
