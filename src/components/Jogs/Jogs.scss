@@ -27,7 +27,9 @@
   color: #979797;
 }
 
-.jog__speed, .jog__distance, .jog__time {
+.jog__speed,
+.jog__distance,
+.jog__time {
   font-size: 14px;
   font-weight: 500;
   margin-top: 9px;
@@ -36,5 +38,17 @@
     font-weight: 500;
     color: #979797;
     margin-left: 4px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .jogs__item {
+    border-bottom: 1px solid rgb(215 215 215);
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0 !important;
+    height: 188px;
   }
 }

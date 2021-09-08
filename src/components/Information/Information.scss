@@ -24,3 +24,12 @@
   font-weight: bold;
   color: $header-container_color;
 }
+
+@media screen and (max-width: 768px) {
+  .container__info {
+    padding: 24px 25px 0 25px;
+  }
+  .info__paragraph:nth-child(odd) {
+    margin-top: 30px;
+  }
+}

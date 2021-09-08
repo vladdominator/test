@@ -36,4 +36,18 @@
   border: solid 1px #979797;
   background-color: #fff;
 }
-  
+
+@media screen and (max-width: 768px) {
+  .filter__block .filter__f:nth-child(2) {
+    margin-left: 12px;
+  }
+  .filter__block {
+    width: 300px;
+  }
+  .filter__input {
+    width: 72px;
+  }
+  .filter__text {
+    width: 100%;
+  }
+}

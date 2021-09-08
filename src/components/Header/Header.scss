@@ -61,7 +61,7 @@ $header-container_color: #7ed321;
   display: none;
   z-index: 1000;
   position: relative;
-  width: 28px;
+  width: 28pt;
   margin-left: 39px;
   height: 23px;
   cursor: pointer;
@@ -144,6 +144,7 @@ $header-container_color: #7ed321;
     color: #000;
     font-size: 32px;
     margin-bottom: 40px;
+    margin-right: 0;
   }
   .active__link {
     border-bottom: 0;
