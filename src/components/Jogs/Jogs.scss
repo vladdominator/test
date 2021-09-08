@@ -3,6 +3,7 @@
   flex-direction: column;
   margin: 0 auto;
   align-items: center;
+  padding-bottom: 30px;
 }
 
 .jogs__item {
@@ -40,7 +41,6 @@
     margin-left: 4px;
   }
 }
-
 @media screen and (max-width: 768px) {
   .jogs__item {
     border-bottom: 1px solid rgb(215 215 215);

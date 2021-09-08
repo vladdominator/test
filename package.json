@@ -4,8 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack && echo '/* /index.html 200' | cat >dist/_redirects",
+    "build": "webpack --mode production",
     "dev": "webpack serve --env development",
+    "start": "node server.js",
     "lint": "eslint src",
     "prettier": "prettier  — write src/**/*.ts"
   },
@@ -35,6 +36,8 @@
     "@types/react-datepicker": "^4.1.6",
     "@types/react-dom": "^17.0.9",
     "@types/react-router-dom": "^5.1.8",
+    "express": "^4.17.1",
+    "express-https-redirect": "^1.0.0",
     "install": "^0.13.0",
     "npm": "^7.22.0",
     "react": "^17.0.2",

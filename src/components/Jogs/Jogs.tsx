@@ -33,17 +33,19 @@ const Jogs: React.FC<IJogComponent> = (props) => {
       <div className="container__jogs">
         {props.jogs
           .filter((item: IJogs) => {
-            if (item.date && dateFrom && dateEnd) {
-              return (
-                item.date >= dateFrom?.getTime() &&
-                item.date <= dateEnd?.getTime()
-              );
-            } else if (item.date && dateFrom) {
-              return item.date >= dateFrom?.getTime();
-            } else if (item.date && dateEnd) {
-              return item.date <= dateEnd?.getTime();
-            } else {
-              return item;
+            if (item.date && item.date > 0) {
+              if (item.date && dateFrom && dateEnd) {
+                return (
+                  item.date * 1000 >= dateFrom?.getTime() &&
+                  item.date * 1000 <= dateEnd?.getTime()
+                );
+              } else if (item.date && dateFrom) {
+                return item.date * 1000 >= dateFrom?.getTime();
+              } else if (item.date && dateEnd) {
+                return item.date * 1000 <= dateEnd?.getTime();
+              } else {
+                return item;
+              }
             }
           })
           .map((item: IJogs) => (
@@ -52,9 +54,9 @@ const Jogs: React.FC<IJogComponent> = (props) => {
               <div className="jogs__information">
                 <p className="jog__date">
                   {item.date
-                    ? `${new Date(item.date).getDate()}.0${
-                        new Date(item.date).getMonth() + 1
-                      }.${new Date(item.date).getFullYear()}`
+                    ? new Date(item.date * 1000)
+                        .toISOString()
+                        .replace(/T().*$/, " $1")
                     : ""}
                 </p>
                 <p className="jog__speed">
