@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IJogs } from "../../asyncUserMethod";
 import { Filter } from "../Filter/Filter";
 import { ModalJog } from "../ModalJog/ModalJog";
@@ -11,6 +11,8 @@ interface IJogComponent {
 
 const Jogs: React.FC<IJogComponent> = (props) => {
   const [modalJog, setModalJog] = useState<boolean>(false);
+  const [dateFrom, setDateFrom] = useState<Date>();
+  const [dateEnd, setDateEnd] = useState<Date>();
 
   if (modalJog) {
     return <ModalJog setModalJog={setModalJog} setJogs={props.setJogs} />;
@@ -18,36 +20,60 @@ const Jogs: React.FC<IJogComponent> = (props) => {
 
   return (
     <>
-      {props.filter ? <Filter /> : ""}
+      {props.filter ? (
+        <Filter
+          dateFrom={dateFrom}
+          setDateFrom={setDateFrom}
+          dateEnd={dateEnd}
+          setDateEnd={setDateEnd}
+        />
+      ) : (
+        ""
+      )}
       <div className="container__jogs">
-        {props.jogs.map((item: IJogs) => (
-          <div key={item.id} className="jogs__item">
-            <img src="../images/icon.png" alt="icon" />
-            <div className="jogs__information">
-              <p className="jog__date">
-                {item.date
-                  ? `${new Date(item.date).getDate()}.${
-                      new Date(item.date).getMonth() + 1
-                    }.${new Date(item.date).getFullYear()}`
-                  : ""}
-              </p>
-              <p className="jog__speed">
-                Speed:
-                <span>
-                  {item.distance && item.time
-                    ? Math.round(item.distance / item.time)
+        {props.jogs
+          .filter((item: IJogs) => {
+            if (item.date && dateFrom && dateEnd) {
+              return (
+                item.date >= dateFrom?.getTime() &&
+                item.date <= dateEnd?.getTime()
+              );
+            } else if (item.date && dateFrom) {
+              return item.date >= dateFrom?.getTime();
+            } else if (item.date && dateEnd) {
+              return item.date <= dateEnd?.getTime();
+            } else {
+              return item;
+            }
+          })
+          .map((item: IJogs) => (
+            <div key={item.id} className="jogs__item">
+              <img src="../images/icon.png" alt="icon" />
+              <div className="jogs__information">
+                <p className="jog__date">
+                  {item.date
+                    ? `${new Date(item.date).getDate()}.0${
+                        new Date(item.date).getMonth() + 1
+                      }.${new Date(item.date).getFullYear()}`
                     : ""}
-                </span>
-              </p>
-              <p className="jog__distance">
-                Distance: <span>{item.distance}</span>
-              </p>
-              <p className="jog__time">
-                Time: <span>{item.time}</span>
-              </p>
+                </p>
+                <p className="jog__speed">
+                  Speed:
+                  <span>
+                    {item.distance && item.time
+                      ? Math.round(item.distance / item.time)
+                      : ""}
+                  </span>
+                </p>
+                <p className="jog__distance">
+                  Distance: <span>{item.distance}</span>
+                </p>
+                <p className="jog__time">
+                  Time: <span>{item.time}</span>
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         <img
           className="add_jogs_button"
           src="../images/add.png"

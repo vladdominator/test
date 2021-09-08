@@ -1,5 +1,39 @@
+@import "~react-datepicker/dist/react-datepicker.css";
+
 .filter_container {
   width: 100%;
   height: 60px;
   background-color: #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.filter__block {
+  width: 381px;
+  display: flex;
+  .filter__f {
+    display: flex;
+    align-items: center;
+  }
+  .filter__f:nth-child(2) {
+    margin-left: 45px;
+  }
+}
+
+.filter__text {
+  font-size: 13px;
+  color: #979797;
+  width: 89px;
+}
+
+.filter__input {
+  width: 100px;
+  height: 31px;
+  margin-left: 15px;
+  padding: 0 10px;
+  border-radius: 11px;
+  border: solid 1px #979797;
+  background-color: #fff;
+}
+  

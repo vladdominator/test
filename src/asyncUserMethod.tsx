@@ -3,7 +3,7 @@ export interface IJogs {
   user_id?: string;
   distance?: number;
   time?: number;
-  date?: Date;
+  date?: number;
 }
 
 interface IResponse {
