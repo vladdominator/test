@@ -20,7 +20,7 @@ export interface User {
 const App: React.FC = () => {
   const [user, setUser] = useState<User>({});
   const [jogs, setJogs] = useState<IJogs[]>([]);
-  const [processing, setProcessing] = useState<boolean>(false);
+  const [processing, setProcessing] = useState<boolean>(true);
   const [filter, setFilter] = useState<boolean>(false);
 
   const fetchData = async (token: string) => {
@@ -43,20 +43,20 @@ const App: React.FC = () => {
     }
   }, []);
 
-  if (processing) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <BrowserRouter>
       <Header user={user} setFilter={setFilter} filter={filter} />
-      {Object.keys(user).length !== 0 ? (
+      {processing ? (
+        <div>Loading...</div>
+      ) : Object.keys(user).length !== 0 ? (
         <Switch>
           <Route path="/info" exact render={() => <Information />} />
           <Route
             path="/"
             exact
-            render={() => <Jogs jogs={jogs} setJogs={setJogs} filter={filter} />}
+            render={() => (
+              <Jogs jogs={jogs} setJogs={setJogs} filter={filter} />
+            )}
           />
           <Route component={NoMatchPage} path="" />
         </Switch>
