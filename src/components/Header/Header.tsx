@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { User } from "../../App";
 import "./Header.scss";
@@ -10,39 +10,56 @@ interface IHeader {
 }
 
 const Header: React.FC<IHeader> = (props) => {
+  const [activeMenu, setActiveMenu] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (activeMenu) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [activeMenu]);
+
   return (
     <header className="header">
       <div className="container">
         <div className="header__container">
           <NavLink to="/">
-            <img src="../images/logo.png" alt="logo" />
+            <div
+              className={activeMenu ? "logo__image active" : "logo__image"}
+            ></div>
           </NavLink>
           {Object.keys(props.user).length !== 0 ? (
-            <div className="navigation">
-              <NavLink
-                to="/"
-                activeClassName="active__link"
-                className="link"
-                exact
-              >
-                JOGS
-              </NavLink>
-              <NavLink
-                to="/info"
-                activeClassName="active__link"
-                className="link"
-                exact
-              >
-                INFO
-              </NavLink>
-              <NavLink
-                to="/contactus"
-                activeClassName="active__link"
-                className="link"
-                exact
-              >
-                CONTACT US
-              </NavLink>
+            <div className="navigation_container">
+              <div className={activeMenu ? "navigation active" : "navigation"}>
+                <NavLink
+                  to="/"
+                  activeClassName="active__link"
+                  className="link"
+                  onClick={() => setActiveMenu(false)}
+                  exact
+                >
+                  JOGS
+                </NavLink>
+                <NavLink
+                  to="/info"
+                  activeClassName="active__link"
+                  className="link"
+                  onClick={() => setActiveMenu(false)}
+                  exact
+                >
+                  INFO
+                </NavLink>
+                <NavLink
+                  to="/contactus"
+                  activeClassName="active__link"
+                  className="link"
+                  onClick={() => setActiveMenu(false)}
+                  exact
+                >
+                  CONTACT US
+                </NavLink>
+              </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="39"
@@ -67,6 +84,18 @@ const Header: React.FC<IHeader> = (props) => {
                   />
                 </g>
               </svg>
+              <div
+                className={
+                  activeMenu
+                    ? "hamburger__container active"
+                    : "hamburger__container"
+                }
+                onClick={() => {
+                  setActiveMenu((prev: boolean) => !prev);
+                }}
+              >
+                <span></span>
+              </div>
             </div>
           ) : (
             ""

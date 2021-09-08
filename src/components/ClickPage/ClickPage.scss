@@ -29,3 +29,27 @@ $white: #fff;
   color: $white;
   margin-top: 56px;
 }
+.bear__face_mobile {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .main__container {
+    padding: 141pt 0 0 0;
+  }
+  .click__me_container {
+    background: inherit;
+    padding-top: 0;
+  }
+  .bear__face_mobile {
+    display: block;
+  }
+  .bear__face_desktop {
+    display: none;
+  }
+  .click__me_button {
+    background: inherit;
+    color: $click_container;
+    border: 3px solid $click_container;
+  }
+}

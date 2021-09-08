@@ -28,7 +28,8 @@ const ClickPage: React.FC<IClickPage> = (props) => {
       <div className="container">
         <div className="main__container">
           <div className="click__me_container">
-            <img src="../images/bear-face.png" alt="bear-face" />
+            <img src="../images/bear-face.png" alt="bear-face" className="bear__face_desktop" />
+            <img src="../images/bearFaceMobile.png" alt="bear-face_mobile" className="bear__face_mobile" />
             <button
               className="click__me_button"
               onClick={handleAuthorizationClick}
